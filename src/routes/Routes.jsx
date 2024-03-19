@@ -3,6 +3,7 @@ import { MainLayout } from '../components/MainLayout.jsx';
 import { Root } from './Root.jsx';
 import { NotFound } from '../utils/NotFound.jsx';
 import { ErrorPage } from '../utils/ErrorPage.jsx';
+import { Settings } from '../components/pages/Settings/Settings.jsx';
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
       {
         path: 'main',
         element: <MainLayout />, //
+      },
+      {
+        path: '/settings',
+        element: <Settings />,
       },
     ],
   },
