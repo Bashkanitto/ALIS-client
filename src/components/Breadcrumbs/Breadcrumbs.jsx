@@ -1,13 +1,16 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const breadcrumbsItems = [
   { text: 'Организация', to: '/settings' },
-  { text: 'Сотрудники', to: '/employees' },
-  { text: 'Контрагент', to: '/counterparty' },
-  { text: 'Документ', to: '/document' },
+  { text: 'Сотрудники', to: '/settings' },
+  { text: 'Контрагент', to: '/settings' },
+  { text: 'Документ', to: '/settings' },
 ];
 
 function CustomBreadcrumbs() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <nav className="flex gap-4">
       {breadcrumbsItems.map((item, index) => {
@@ -15,13 +18,12 @@ function CustomBreadcrumbs() {
           <NavLink
             key={index}
             to={item.to}
-            className={({ isActive, isPending }) =>
-              isPending
-                ? 'text-inherit text-decoration-none'
-                : isActive
+            className={
+              index === activeIndex
                 ? 'text-inherit border-b-2 border-blue-500 text-decoration-none'
                 : ' text-inherit'
             }
+            onClick={() => setActiveIndex(index)}
           >
             {item.text}
           </NavLink>

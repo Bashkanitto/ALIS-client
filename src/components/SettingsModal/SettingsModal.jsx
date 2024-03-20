@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 
 function Modal({ isOpen, onClose }) {
@@ -29,13 +28,13 @@ function Modal({ isOpen, onClose }) {
       }`}
     >
       <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50"></div>
-      <div className="bg-white p-9 rounded-lg shadow-lg w-[500px] relative z-10">
-        <div className="absolute top-3 end-3">
-          <IconButton aria-label="close">
-            <CloseIcon onClick={onClose} />
-          </IconButton>
+      <div className="bg-white p-10 rounded-lg shadow-lg w-[600px] relative z-10">
+        <div className="absolute top-2 end-2">
+          <button onClick={onClose}>
+            <CloseIcon />
+          </button>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
               htmlFor="field1"
@@ -90,7 +89,7 @@ function Modal({ isOpen, onClose }) {
           <div className="flex justify-between">
             <button
               type="submit"
-              className="bg-blue-500 text-white w-full px-4 py-2 rounded-md"
+              className="bg-blue-500 text-white w-full px-4 py-2 rounded-md hover:opacity-[0.4]"
             >
               Отправить
             </button>

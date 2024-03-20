@@ -1,92 +1,81 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
-  Paper,
-  IconButton,
-} from '@mui/material';
-import { useState } from 'react';
-import AddIcon from '@mui/icons-material/Add';
-import DownloadIcon from '@mui/icons-material/CloudDownload';
+import { DataGrid } from '@mui/x-data-grid';
+import { IconButton } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import DownloadIcon from '@mui/icons-material/CloudDownload';
 
-// Генерируем случайные данные для таблицы
-const generateData = () => {
-  const rows = [];
-  for (let i = 0; i < 7; i++) {
-    const cells = [];
-    for (let j = 0; j < 5; j++) {
-      cells.push(``);
-    }
-    rows.push(cells);
-  }
-  return rows;
-};
+const rows = [
+  { id: 1, name: 'Jon', binIin: 'Snow', jur_address: 35 },
+  { id: 2, name: 'Cersei', binIin: 'Lannister', jur_address: 42 },
+  { id: 3, name: 'Jaime', binIin: 'Lannister', jur_address: 45 },
+];
 
-const Tables = ({ openModal }) => {
-  const [hoveredCell, setHoveredCell] = useState(null);
-  const [data] = useState(generateData());
-
-  const handleCellHover = (rowIndex, cellIndex) => {
-    setHoveredCell({ rowIndex, cellIndex });
-  };
-
-  const handleCellLeave = () => {
-    setHoveredCell(null);
-  };
-
-  const renderIcons = () => {
-    return (
-      <div className="flex gap-2">
-        <IconButton color="primary" size="small">
-          <AddIcon
-            onClick={() => {
-              openModal(true);
-            }}
-          />
-        </IconButton>
-        <IconButton color="success" size="small">
-          <DownloadIcon />
-        </IconButton>
-        <IconButton color="error" size="small">
-          <DeleteIcon />
-        </IconButton>
-      </div>
-    );
-  };
+// eslint-disable-next-line react/prop-types
+function Tables({ openModal }) {
+  const columns = [
+    {
+      field: '__check__',
+      headerName: '',
+      width: 50,
+      sortable: false,
+      filterable: false,
+    },
+    { field: 'id', headerName: 'ID', width: 200 },
+    { field: 'name', headerName: 'Имя компании', width: 200 },
+    { field: 'binIin', headerName: 'БИН', width: 200 },
+    { field: 'jur_address', headerName: 'Реквизиты компании', width: 200 },
+    {
+      field: 'actions',
+      headerName: 'Действия',
+      width: 200,
+      sortable: false,
+      type: 'number',
+      renderCell: params => (
+        <div>
+          <IconButton
+            aria-label="edit"
+            onClick={() =>
+              console.log(`Редактировать запись с ID: ${params.row.id}`)
+            }
+          >
+            <EditIcon />
+          </IconButton>
+          <IconButton
+            aria-label="delete"
+            onClick={() => console.log(`Удалить запись с ID: ${params.row.id}`)}
+          >
+            <DeleteIcon />
+          </IconButton>
+          <IconButton
+            aria-label="download"
+            onClick={() => console.log(`Скачать запись с ID: ${params.row.id}`)}
+          >
+            <DownloadIcon />
+          </IconButton>
+        </div>
+      ),
+    },
+  ];
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 900, borderCollapse: 'collapse' }}>
-        <TableBody>
-          {data.map((row, rowIndex) => (
-            <TableRow key={rowIndex}>
-              {row.map((cell, cellIndex) => (
-                <TableCell
-                  key={cellIndex}
-                  onMouseEnter={() => handleCellHover(rowIndex, cellIndex)}
-                  onMouseLeave={handleCellLeave}
-                  sx={{
-                    border: '1px solid black',
-                    minWidth: '200px',
-                    height: '80px',
-                  }}
-                >
-                  {hoveredCell &&
-                  hoveredCell.rowIndex === rowIndex &&
-                  hoveredCell.cellIndex === cellIndex
-                    ? renderIcons()
-                    : cell}
-                </TableCell>
-              ))}
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div className="w-[1100px] h-[500px] relative">
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        checkboxSelection
+        disableSelectionOnClick
+        getRowId={row => row.id}
+      />
+      <div className="text-neutral-950">
+        <button
+          onClick={openModal}
+          className="absolute flex items-center bottom-[0] bg-transparent h-[53px] text-lg"
+        >
+          Создать
+        </button>
+      </div>
+    </div>
   );
-};
+}
 
 export default Tables;
