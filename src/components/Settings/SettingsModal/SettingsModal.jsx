@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 
+// eslint-disable-next-line react/prop-types
 function Modal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
     field1: '',

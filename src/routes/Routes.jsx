@@ -3,7 +3,7 @@ import { MainLayout } from '../components/MainLayout.jsx';
 import { Root } from './Root.jsx';
 import { NotFound } from '../utils/NotFound.jsx';
 import { ErrorPage } from '../utils/ErrorPage.jsx';
-import { Settings } from '../components/pages/Settings/Settings.jsx';
+import { Settings } from '../components/Settings/Settings.jsx';
 
 export const router = createBrowserRouter([
   {

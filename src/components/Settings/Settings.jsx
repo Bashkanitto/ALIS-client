@@ -1,6 +1,6 @@
-import CustomBreadcrumbs from '../../Breadcrumbs/Breadcrumbs';
-import Tables from '../../Table/Tables';
-import SettingsModal from '../../SettingsModal/SettingsModal';
+import CustomBreadcrumbs from './Breadcrumbs/Breadcrumbs';
+import Tables from './Table/Tables';
+import SettingsModal from './SettingsModal/SettingsModal';
 import { useState } from 'react';
 
 export function Settings() {
