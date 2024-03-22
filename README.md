@@ -1,3 +1,6 @@
+<img width="769" alt="image" src="https://github.com/Bashkanitto/ALIS-client/assets/86559848/9fc36335-98e3-4ddf-97a4-7a97f1b2cafa">
+
+
 # ALIS – Agile Lawyer Intellect Services
 
 ## Введение
