@@ -3,6 +3,7 @@ import { MainLayout } from '../components/MainLayout.jsx';
 import { Root } from './Root.jsx';
 import { NotFound } from '../utils/NotFound.jsx';
 import { ErrorPage } from '../utils/ErrorPage.jsx';
+import { Editor } from '../components/Editor/Editor.jsx';
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +21,14 @@ export const router = createBrowserRouter([
       // },
       {
         path: 'main',
-        element: <MainLayout />, //
+        element: <MainLayout />,
+        children: [
+          {
+            path: '/main/editor',
+            index: true,
+            element: <Editor />,
+          },
+        ],
       },
     ],
   },
