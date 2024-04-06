@@ -5,6 +5,8 @@ import { NotFound } from '../utils/NotFound.jsx';
 import { ErrorPage } from '../utils/ErrorPage.jsx';
 import { Editor } from '../components/Editor/Editor.jsx';
 import { Settings } from '../components/Settings/Settings.jsx';
+import Login from '../components/Auth/Login.jsx';
+import Register from '../components/Auth/Registration.jsx';
 
 export const router = createBrowserRouter([
   {
@@ -16,10 +18,14 @@ export const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
-      // {
-      //   path: 'auth',
-      //   element: <AuthLayout />, // авторизация
-      // },
+      {
+        path: 'login',
+        element: <Login />, // авторизация
+      },
+      {
+        path: 'register',
+        element: <Register />, // регистрация
+      },
       {
         path: '/',
         element: <MainLayout />,
