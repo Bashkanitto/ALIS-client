@@ -1,16 +1,9 @@
-import { useState } from 'react';
-import { TextField, Button, Link } from '@mui/material';
+import { Button, Link, Container, Typography } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { Link as RouterLink } from 'react-router-dom';
+import { TextField } from '@mui/material';
 
 const Login = () => {
-  const [formData, setFormData] = useState({ email: '', password: '' });
-
-  const handleChange = event => {
-    const { name, value } = event.target;
-    setFormData(prevData => ({ ...prevData, [name]: value }));
-  };
-
   const {
     control,
     handleSubmit,
@@ -18,87 +11,111 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = data => {
-    console.log(data); // You can handle login logic here
+    console.log(data);
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="rounded-xl shadow-2xl ptContainer-6 m-4 bg-inherit flex flex-col items-center justify-center w-[600px] h-[700px]">
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="w-full p-10 bg-inherit"
+    <Container
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100vh',
+        marginTop: '50px',
+      }}
+    >
+      <Container
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px',
+          alignItems: 'center',
+          padding: '200px 0px',
+          borderRadius: '20px',
+          boxShadow: '0px 25px 50px rgba(0, 0, 0, 0.25)',
+        }}
+      >
+        <Typography
+          variant="h4"
+          align="center"
+          gutterBottom
+          style={{
+            fontFamily: 'Arial, sans-serif',
+            fontSize: '40px',
+            fontWeight: 'bold',
+            marginBottom: '50px',
+          }}
         >
-          <div className="mb-4 w-full">
-            <Controller
-              name="email"
-              control={control}
-              defaultValue=""
-              rules={{
-                required: 'Email is required',
-                pattern: {
-                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                  message: 'Invalid email address',
-                },
-              }}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  fullWidth
-                  label="Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  variant="outlined"
-                  error={Boolean(errors.email)}
-                  helperText={errors.email && errors.email.message}
-                />
-              )}
-            />
-          </div>
-          <div className="mb-6 w-full">
-            <Controller
-              name="password"
-              control={control}
-              defaultValue=""
-              rules={{ required: 'Password is required' }}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  fullWidth
-                  type="password"
-                  label="Password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  variant="outlined"
-                  error={Boolean(errors.password)}
-                  helperText={errors.password && errors.password.message}
-                />
-              )}
-            />
-          </div>
+          Вход
+        </Typography>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Controller
+            name="email"
+            control={control}
+            defaultValue=""
+            rules={{
+              required: 'Email is required',
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: 'Invalid email address',
+              },
+            }}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                fullWidth
+                label="Email"
+                variant="outlined"
+                error={Boolean(errors.email)}
+                helperText={errors.email && errors.email.message}
+                style={{
+                  marginBottom: '24px',
+                }}
+              />
+            )}
+          />
+          <Controller
+            name="password"
+            control={control}
+            defaultValue=""
+            rules={{ required: 'Password is required' }}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                fullWidth
+                type="password"
+                label="Password"
+                variant="outlined"
+                error={Boolean(errors.password)}
+                helperText={errors.password && errors.password.message}
+                style={{ marginBottom: '54px' }}
+              />
+            )}
+          />
           <Button
             fullWidth
             type="submit"
             variant="contained"
             color="primary"
             disableElevation
+            style={{ marginBottom: '26px' }}
           >
-            Login
+            Войти
           </Button>
         </form>
-        <div className="mt-3 flex flex-col gap-2 md:flex-row md:gap-5">
-          <span>Нет учетной записи?</span>
+        <div style={{ display: 'flex', gap: '20px' }}>
+          <Typography variant="body1">Нет учетной записи? </Typography>
           <Link
             component={RouterLink}
             to="/register"
             variant="body1"
             underline="hover"
           >
-            Зарегистрироваться
+            Создать
           </Link>
         </div>
-      </div>
-    </div>
+      </Container>
+    </Container>
   );
 };
 
