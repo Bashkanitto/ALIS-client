@@ -10,13 +10,32 @@ import {
 } from '@mui/material';
 import { ArrowRight } from '@mui/icons-material';
 
-import { useNavigation } from '../hooks/useNavigation';
+// import { useNavigation } from '../hooks/useNavigation';
+import menuItems from '../constants/menuItems';
 
 const sidebarWidth = 320;
 
 export const Sidebar = () => {
   const { pathname } = useLocation();
-  const { menu } = useNavigation();
+  // const { menu } = menuItems();
+  const formatLink = link => {
+    // Проверяем, содержит ли ссылка символ '#'
+    if (link.includes('#')) {
+      // Разделяем URL-адрес по символу '#'
+      const parts = link.split('#');
+      // Берем последнюю часть, которая содержит нужный сегмент
+      const lastPart = parts.pop();
+      // Если в последней части есть символ '/', удаляем его
+      const formattedPart = lastPart.endsWith('/') ? lastPart.slice(0, -1) : lastPart;
+      // Возвращаем последнюю часть URL-адреса
+      return parts.join('#') + '#' + formattedPart;
+    } else {
+      // Если ссылка не содержит символ '#', возвращаем ее без изменений
+      return link;
+    }
+  };
+
+  const formattedPathname = formatLink(pathname);
   const { isExtended, setIsExtended } = useState(false);
   const isDarkMode = true;
 
@@ -66,13 +85,13 @@ export const Sidebar = () => {
           }}
         >
           <List>
-            {menu.map(
+            {menuItems.map(
               item =>
-                !item.bottom && (
+                (
                   <ListItemButton
                     key={item.id}
                     component={Link}
-                    to={item.link ?? ''}
+                    to={formatLink(item.link ?? '')}
                     selected={pathname === item.link}
                     sx={{
                       padding: '5px 5px',
@@ -111,9 +130,9 @@ export const Sidebar = () => {
             )}
           </List>
           <List>
-            {menu.map(
+            {menuItems.map(
               item =>
-                item.bottom && (
+                (
                   <ListItemButton
                     key={item.id}
                     component={Link}

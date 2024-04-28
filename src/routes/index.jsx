@@ -4,11 +4,11 @@ import OrganizationForm from '../components/OrganizationForm.jsx';
 
 export default [
   {
-    path: 'documents',
+    path: '/documents',
     element: <DocumentForm />,
   },
   {
-    path: 'generation',
+    path: '/generation',
     element: <OrganizationForm />,
   },
   {
