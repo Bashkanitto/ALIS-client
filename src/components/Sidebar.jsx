@@ -35,7 +35,7 @@ export const Sidebar = () => {
     }
   };
 
-  const formattedPathname = formatLink(pathname);
+  // const formattedPathname = formatLink(pathname);
   const { isExtended, setIsExtended } = useState(false);
   const isDarkMode = true;
 
