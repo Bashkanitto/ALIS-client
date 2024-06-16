@@ -1,7 +1,8 @@
 import { Add } from '@mui/icons-material';
-import DocumentSelect from '../components/DocumentSelect';
+import DocumentSelect from '../components/DocumentListItem';
 import MappingInputs from '../components/MappingInputs';
 import templateList from '../constants/templatesList';
+
 const TemplateGeneration = () => {
   return (
     <div className="template-generation-wrapper">

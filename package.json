@@ -21,6 +21,7 @@
 		"dotenv": "^16.4.5",
 		"google-api-javascript-client": "^0.1.0",
 		"react": "^18.2.0",
+		"react-doc-viewer": "^0.1.11",
 		"react-dom": "^18.2.0",
 		"react-hook-form": "^7.51.2",
 		"react-redux": "^9.1.1",

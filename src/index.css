@@ -132,21 +132,22 @@ h3 {
 
 .template-generation-wrapper {
   height: 100%;
+  width: 100%;
   background: var(--bg-card);
   padding: 20px;
   border-radius: 10px;
   border: 1px solid;
   overflow: scroll;
   scrollbar-width: none;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 45% 55%;
   gap: 20px;
   border-image-source: linear-gradient(
     101.78deg,
     rgba(231, 230, 249, 0.25) 1.24%,
     rgba(212, 210, 243, 0.15) 100%
   );
-  width: calc(100% - 320px);
+  width: calc(100vw - 320px);
 }
 
 .document-select-wrapper {
@@ -221,12 +222,35 @@ h3 {
   border-bottom: 1px solid grey;
 }
 
-.document-select {
+.document-template-table-title {
   width: 100%;
   padding: 20px 10px;
-  display: flex;
-  justify-content: space-between;
   border-bottom: 1px solid grey;
+  display: grid;
+  grid-template-columns: 40% 30% 30%;
+  gap: 10px;
+  justify-content: start;
+}
+
+.document-template-table-item {
+  width: 100%;
+  padding: 20px 10px;
+  display: grid;
+  grid-template-columns: 40% 30% 30%;
+  gap: 10px;
+  justify-content: start;
+}
+
+.document-template-table-item:hover {
+  cursor: pointer;
+  background: var(--bg-card);
+}
+
+.document-item-action-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
 }
 
 .document-select:hover {
