@@ -15,9 +15,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --color-primary: #8767C4;
-  --bg-body: #261E35;
-  --bg-card: #D4D2F31A;
+  --color-primary: #8767c4;
+  --bg-body: #261e35;
+  --bg-card: #d4d2f31a;
 }
 body {
   background: var(--bg-body);
@@ -37,10 +37,10 @@ h1 {
   line-height: 1.1;
 }
 h2 {
-  font-size: 2.0em;
+  font-size: 2em;
   line-height: 1.1;
 }
-h3{
+h3 {
   font-size: 1.2em;
   line-height: 1.1;
 }
@@ -50,7 +50,7 @@ h3{
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items:  center;
+  align-items: center;
 }
 
 .auth-form {
@@ -64,7 +64,7 @@ h3{
   border-radius: 10px;
 }
 
-.auth-text{
+.auth-text {
   width: 100%;
   overflow: hidden;
   display: flex;
@@ -73,16 +73,17 @@ h3{
   align-items: center;
 }
 
-.auth-text h2, .auth-text p{
-  animation: slide 1s ;
+.auth-text h2,
+.auth-text p {
+  animation: slide 1s;
 }
 
-.auth-form hr{
+.auth-form hr {
   background: grey;
-  padding: 25% 0.1px;  
+  padding: 25% 0.1px;
 }
 
-.auth-button-wrapper{
+.auth-button-wrapper {
   overflow: hidden;
   width: 100%;
   display: flex;
@@ -156,21 +157,21 @@ h3{
   height: 85vh;
 }
 
-.template-generation-block{
+.template-generation-block {
   padding: 20px;
   height: 240px;
-  width:22%;
+  width: 22%;
   background: var(--bg-card);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border-radius: 10px;
 }
-.template-generation-block p{
+.template-generation-block p {
   margin-bottom: 10px;
 }
 
-.template-generation-block button{
+.template-generation-block button {
   padding: 5px 10px;
   margin-top: 20px;
   border-radius: 10px;
@@ -181,7 +182,7 @@ h3{
   background: var(--color-primary);
 }
 
-.template-generation-wrapper select{
+.template-generation-wrapper select {
   color: white;
   font-size: 12px;
   padding: 7px 10px;
@@ -190,7 +191,7 @@ h3{
   border: 1px solid grey;
 }
 
-.template-create{
+.template-create {
   border: 1px dashed grey;
   height: 240px;
   width: 22%;
@@ -199,10 +200,9 @@ h3{
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-
 }
 
-.template-create:hover{
+.template-create:hover {
   background: var(--bg-card);
 }
 
@@ -214,7 +214,7 @@ h3{
   border: 1px solid var(--bg-card);
 }
 .document-select-wrapper ul {
-  display: flex; 
+  display: flex;
   justify-content: space-between;
   padding: 10px 10px;
   font-weight: bold;
@@ -226,13 +226,13 @@ h3{
   padding: 20px 10px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid grey ;
+  border-bottom: 1px solid grey;
 }
 
 .document-select:hover {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid grey ;
+  border-bottom: 1px solid grey;
   background: var(--bg-card);
 }
 .template-generation-working-zone {
@@ -244,10 +244,6 @@ h3{
 .mapping-inputs-wrapper {
   padding: 12px;
   border-radius: 16px;
-<<<<<<< HEAD
-  background-color: var(--bg-card);
-  border: 1px dashed #333;
-=======
   background-color: var(--bg-body);
   border: 3px dashed lightgrey;
 }
@@ -258,14 +254,13 @@ h3{
   padding: 8px;
   border-radius: 8px;
   border: 1px solid #fff;
->>>>>>> b0628b4 (savE)
 }
 
 .mapping-inputs {
   display: flex;
   flex-direction: column;
 }
-.mapping-inputs input{
+.mapping-inputs input {
   margin-bottom: 10px;
   background: transparent;
   border: 1px solid grey;
@@ -273,24 +268,19 @@ h3{
   border-radius: 5px;
 }
 
-
-
-
 @keyframes slide {
-  0%{
-    transform:  translateX(400px);
+  0% {
+    transform: translateX(400px);
   }
-  100%{
-    transform:  translateX(0px);
-
+  100% {
+    transform: translateX(0px);
   }
 }
 @keyframes slide-reverse {
-  0%{
-    transform:  translateX(-400px);
+  0% {
+    transform: translateX(-400px);
   }
-  100%{
-    transform:  translateX(0px);
-
+  100% {
+    transform: translateX(0px);
   }
 }
